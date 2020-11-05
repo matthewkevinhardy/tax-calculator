@@ -26,12 +26,13 @@ public class TaxCalcTest {
     	
     	try {
     		TaxCalc taxCalc = new TaxCalc.TaxCalcBuilder(10,"GBP")
-        			.addAmount(new ValueCurrencyPair<Double,String>(40d, "USD")).build();
+    				.addAmount(new ValueCurrencyPair<Double,String>(40d, "GBP"))
+        			.addAmount(new ValueCurrencyPair<Double,String>(50d, "USD")).build();
     		
             fail("didn't throw");
             
         } catch (ApplicationException e) {
-        	assertEquals("bad currency",e.getMessage());
+        	assertEquals("bad currency, expecting: GBP recieved: USD",e.getMessage());
         } catch (Exception e) {
         	fail("unexpected excetion: "+e.getMessage());
         }

@@ -27,7 +27,7 @@ public class TaxCalc {
 		}
 		public TaxCalcBuilder addAmount(ValueCurrencyPair<Double,String> amount) throws ApplicationException{
 			if(!this.currency.equals(amount.currency)) {
-				throw new ApplicationException("bad currency");
+				throw new ApplicationException("bad currency, expecting: "+this.currency+" recieved: "+amount.currency);
 			}
 			this.amounts.add(amount);
 			return this;
