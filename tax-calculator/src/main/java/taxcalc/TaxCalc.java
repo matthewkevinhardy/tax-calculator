@@ -27,12 +27,15 @@ public class TaxCalc {
 		}
 		public TaxCalcBuilder addAmount(ValueCurrencyPair<Double,String> amount) throws ApplicationException{
 			if(!this.currency.equals(amount.currency)) {
-				throw new ApplicationException("bad currency!");
+				throw new ApplicationException("bad currency");
 			}
 			this.amounts.add(amount);
 			return this;
 		}
 		public TaxCalc build() {
+			if(this.amounts.isEmpty()) {
+				throw new ApplicationException("no amounts");
+			}
 			TaxCalc taxCalc = new TaxCalc(this);
 			return taxCalc;
 		}
@@ -40,14 +43,13 @@ public class TaxCalc {
 	
 	public ValueCurrencyPair<Double, String> netAmount() {
 
-		//ValueCurrencyPair<Integer, String> total = new ValueCurrencyPair<Integer, String>(0, this.currency);
 		double total=0;
 		
 		for (ValueCurrencyPair<Double,String> value:this.amounts) {
 			total += value.amount;
 		}
 
-		Double tax = total * (percent / 100d);
+		double tax = total * (percent / 100d);
 		ValueCurrencyPair<Double, String> net = new ValueCurrencyPair<>(total-tax, this.currency);
 
 		return net;

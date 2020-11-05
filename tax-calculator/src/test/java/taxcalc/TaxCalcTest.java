@@ -31,7 +31,7 @@ public class TaxCalcTest {
             fail("didn't throw");
             
         } catch (ApplicationException e) {
-        	assertEquals("bad currency!",e.getMessage());
+        	assertEquals("bad currency",e.getMessage());
         } catch (Exception e) {
         	fail("unexpected excetion: "+e.getMessage());
         }
