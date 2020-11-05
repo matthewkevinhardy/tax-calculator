@@ -18,7 +18,7 @@ public class TaxCalcTest {
     	
     	Double net = taxCalc.netAmount().amount;
     	
-        assertEquals(135, net.intValue());
+        assertEquals(135, net.doubleValue(),0);
     }
 
     @Test
