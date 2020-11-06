@@ -9,7 +9,7 @@ import static taxcalc.TaxCalc.ValueCurrencyPair;
 public class TaxCalcTest {
 
     @Test
-    public void canCalculateTax() throws Exception {
+    public void canCalculateTax() {
         
     	TaxCalc taxCalc = new TaxCalc.TaxCalcBuilder(10,"GBP")
     			.addAmount(new ValueCurrencyPair<Double,String>(40d, "GBP"))
@@ -22,7 +22,7 @@ public class TaxCalcTest {
     }
 
     @Test
-    public void cannotSumDifferentCurrencies() throws Exception {
+    public void cannotSumDifferentCurrencies() {
     	
     	try {
     		TaxCalc taxCalc = new TaxCalc.TaxCalcBuilder(10,"GBP")
