@@ -32,7 +32,7 @@ public class TaxCalc {
 			this.amounts.add(amount);
 			return this;
 		}
-		public TaxCalc build() {
+		public TaxCalc build() throws ApplicationException {
 			if(this.amounts.isEmpty()) {
 				throw new ApplicationException("no amounts");
 			}
